@@ -36,16 +36,12 @@ class Scanner(context: Context) {
 
   @SuppressLint("MissingPermission")
   fun start(
-    serviceUUID: UUID,
+    filter: ScanFilter,
     onDeviceFound: (ScanResult) -> Unit,
     onScanStartFailure: (Int) -> Unit
   ) {
     this.onDeviceFound = onDeviceFound;
     this.onScanStartFailure = onScanStartFailure;
-
-    val filter = ScanFilter.Builder()
-      .setServiceUuid(ParcelUuid(serviceUUID))
-      .build()
 
     bluetoothLeScanner.startScan(
       mutableListOf(filter),

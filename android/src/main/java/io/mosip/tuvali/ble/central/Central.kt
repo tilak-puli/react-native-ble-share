@@ -1,6 +1,7 @@
 package io.mosip.tuvali.ble.central
 
 import android.bluetooth.BluetoothDevice
+import android.bluetooth.le.ScanFilter
 import android.content.Context
 import android.os.HandlerThread
 import android.os.Process
@@ -34,8 +35,8 @@ class Central(context: Context, centralLister: ICentralListener) {
     messageSender.sendMessage(DisconnectAndCloseMessage())
   }
 
-  fun scan(serviceUuid: UUID) {
-    val scanStartMessage = ScanStartMessage(serviceUuid)
+  fun scan(scanFilter: ScanFilter) {
+    val scanStartMessage = ScanStartMessage(scanFilter)
 
     messageSender.sendMessage(scanStartMessage)
   }

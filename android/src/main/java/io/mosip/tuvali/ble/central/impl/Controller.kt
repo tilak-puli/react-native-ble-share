@@ -35,7 +35,7 @@ class Controller(val context: Context) {
   fun scan(scanStartMessage: ScanStartMessage) {
     scanner = Scanner(context)
     scanner?.start(
-      scanStartMessage.serviceUUID,
+      scanStartMessage.scanFilter,
       this::onDeviceFound,
       this::onScanStartFailure
     )
